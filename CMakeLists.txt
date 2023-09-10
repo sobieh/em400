@@ -268,8 +268,10 @@ add_executable(em400
 	${FLEX_ectl_scanner_OUTPUTS}
 )
 
-set_property(TARGET em400 PROPERTY C_STANDARD 11)
 target_compile_options(em400 PRIVATE -Wall)
+target_compile_features(em400 PUBLIC c_std_11)
+target_compile_definitions(em400 PUBLIC _GNU_SOURCE)
+
 target_include_directories(em400 PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_include_directories(em400 PRIVATE ${CMAKE_SOURCE_DIR}/include)
 target_include_directories(em400 PRIVATE ${CMAKE_BINARY_DIR})
@@ -335,9 +337,11 @@ add_executable(emitool
 if(WIN32)
 	target_link_libraries(emitool ws2_32)
 endif()
-set_property(TARGET emitool PROPERTY C_STANDARD 11)
+
 target_include_directories(emitool PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_compile_options(emitool PUBLIC -Wall)
+target_compile_features(emitool PUBLIC c_std_11)
+target_compile_definitions(emitool PUBLIC _GNU_SOURCE)
 
 install(TARGETS emitool
 	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -357,6 +361,8 @@ endif()
 set_property(TARGET embin PROPERTY C_STANDARD 11)
 target_include_directories(embin PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_compile_options(embin PUBLIC -Wall)
+target_compile_features(embin PUBLIC c_std_11)
+target_compile_definitions(embin PUBLIC _GNU_SOURCE)
 
 install(TARGETS embin
 	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

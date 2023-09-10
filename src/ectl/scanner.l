@@ -35,7 +35,6 @@ int ectl_yycolumn = 0;
 %}
 
 %top{
-	#define _XOPEN_SOURCE 500
 }
 
 %option nounput

@@ -28,7 +28,6 @@ void yyerror(char *s, ...);
 %}
 
 %top{
-	#define _XOPEN_SOURCE 500
 }
 
 %option nounput
